@@ -9,7 +9,7 @@ import User from './User';
 import PurchaseDetail from './PurchaseDetail';
 import Login from './Login';
 import Auth from './Auth';
-
+import Footer from './Footer';
 
 import { 
   BrowserRouter as Router,
@@ -18,6 +18,7 @@ import {
 } from "react-router-dom";
 
 import React, { useState, useEffect } from "react";
+
 
 
 function App() {
@@ -120,78 +121,80 @@ function App() {
   }
 
   return (
-    <>
-    {currentUser ?
     <div className="App">
-      <Router>
-        <Header currentUser={currentUser} onLogout={onLogout} />
+      <div className="app-container">
+        {currentUser ?
+        <div>
+          <Router>
+            <Header currentUser={currentUser} onLogout={onLogout} />
+            <Switch>
+              <Route exact path="/">
+                <Home  showItemPage={showItemPage} 
+                setShowItemPage={setShowItemPage} 
+                onAddToCartClick={onAddToCartClick}
+                anchorEl={anchorEl}
+                setAnchorEl={setAnchorEl}
+                />
+              </Route>
 
-        <Switch>
-          <Route exact path="/">
-            <Home  showItemPage={showItemPage} 
-            setShowItemPage={setShowItemPage} 
-            onAddToCartClick={onAddToCartClick}
-            anchorEl={anchorEl}
-            setAnchorEl={setAnchorEl}
-            />
-          </Route>
+              <Route path="/shoppingcart" >
+                <ShoppingCart currentUser={currentUser} needFetch={needFetch} setNeedFetch={setNeedFetch}/>
+              </Route>
 
-          <Route path="/shoppingcart" >
-            <ShoppingCart currentUser={currentUser} needFetch={needFetch} setNeedFetch={setNeedFetch}/>
-          </Route>
+              <Route path="/checkout">
+                <Checkout currentUser={currentUser}/>
+              </Route>
 
-          <Route path="/checkout">
-            <Checkout currentUser={currentUser}/>
-          </Route>
+              <Route path="/me">
+                <User currentUser={currentUser} setCurrentUser={setCurrentUser} needFetch={needFetch} setNeedFetch={setNeedFetch}/>
+              </Route>
 
-          <Route path="/me">
-            <User currentUser={currentUser} setCurrentUser={setCurrentUser} needFetch={needFetch} setNeedFetch={setNeedFetch}/>
-          </Route>
+              <Route path="/items/:type/:id">
+                <ItemDetailPage showItemPage={showItemPage} 
+                                onAddToCartClick={onAddToCartClick}
+                                anchorEl={anchorEl}
+                                setAnchorEl={setAnchorEl}
+                                />
+              </Route>
 
-          <Route path="/items/:type/:id">
-            <ItemDetailPage showItemPage={showItemPage} 
-                            onAddToCartClick={onAddToCartClick}
-                            anchorEl={anchorEl}
-                            setAnchorEl={setAnchorEl}
-                            />
-          </Route>
+              <Route path="/purchase/:purchase_id">
+                <PurchaseDetail />
+              </Route>
 
-          <Route path="/purchase/:purchase_id">
-            <PurchaseDetail />
-          </Route>
+            </Switch>
+          </Router>
+        </div>
+        : 
+        <div>
+        <Router>
+            <Header currentUser={currentUser} onLogout={onLogout} />
 
-        </Switch>
-      </Router>
+            <Switch>
+              <Route exact path="/">
+                <Home  showItemPage={showItemPage} setShowItemPage={setShowItemPage} onAddToCartClick={onAddToCartClick}/>
+              </Route>
+
+              <Route path="/items/:type/:id">
+                <ItemDetailPage showItemPage={showItemPage} 
+                                onAddToCartClick={onAddToCartClick}
+                                />
+              </Route>
+
+              <Route path="/login">
+                <Login  setCurrentUser={setCurrentUser}/>
+              </Route>
+
+              <Route exact path="/signup">
+                  <Auth setCurrentUser={setCurrentUser}/>
+              </Route>
+
+            </Switch>
+        </Router>
+        </div>
+        }
+      </div>
+      <Footer />
     </div>
-    : 
-    <div>
-    <Router>
-        <Header currentUser={currentUser} onLogout={onLogout} />
-
-        <Switch>
-          <Route exact path="/">
-            <Home  showItemPage={showItemPage} setShowItemPage={setShowItemPage} onAddToCartClick={onAddToCartClick}/>
-          </Route>
-
-          <Route path="/items/:type/:id">
-            <ItemDetailPage showItemPage={showItemPage} 
-                            onAddToCartClick={onAddToCartClick}
-                            />
-          </Route>
-
-          <Route path="/login">
-            <Login  setCurrentUser={setCurrentUser}/>
-          </Route>
-
-          <Route exact path="/signup">
-               <Auth setCurrentUser={setCurrentUser}/>
-          </Route>
-
-        </Switch>
-    </Router>
-    </div>
-    }
-    </>
   );
 }
 
