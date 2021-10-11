@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function HomeICHandCareContainer({handCareOnDisplay, onAddToCartClick}) {
+function HomeICHandCareContainer({handCareOnDisplay, onAddToCartClick, anchorEl, setAnchorEl}) {
 
     //material ui thing
     const classes = useStyles();
@@ -25,7 +25,10 @@ function HomeICHandCareContainer({handCareOnDisplay, onAddToCartClick}) {
             <Grid container spacing={3}>
                 {handCareOnDisplay.map((handCareItem)=><HomeICItemCard key={handCareItem.id} 
                                                                         onAddToCartClick={onAddToCartClick}
-                                                                        item={handCareItem}/>)}
+                                                                        item={handCareItem}
+                                                                        anchorEl={anchorEl}
+                                                                        setAnchorEl={setAnchorEl}
+                                                                        />)}
             </Grid>
         </div>
     )

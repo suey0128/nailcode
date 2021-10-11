@@ -24,10 +24,10 @@ function App() {
   //use state for displaying 
   const [showItemPage, setShowItemPage] = useState("pressOn")
   const [currentUser, setCurrentUser] = useState(null)
-  const [isUserLoaded, setisUserLoaded] = useState(false)
   const [errors, setErrors] = useState([]);
 
   const [needFetch, setNeedFetch] = useState(false)
+  const [anchorEl, setAnchorEl] = useState(null);
 
 
   // keep track of the cartItem instances
@@ -68,11 +68,11 @@ function App() {
           });
           if (res.ok) {
             const itemInCartUpdated = await res.json();
-            console.log("dataBackFromPatch",itemInCartUpdated)
             //update the state
             let deletedOldInstance = cartItemInstances.filter(i=> i !== itemAlreadyInCart)
             setCartItemInstances([...deletedOldInstance, itemInCartUpdated])
             setNeedFetch(!needFetch)
+            setAnchorEl(e.target);
           } else {
             const error = await res.json()
             setErrors(error.message)
@@ -100,9 +100,9 @@ function App() {
           if (res.ok) {
             let addedToCartItem = await res.json();
             //update the state
-            console.log(addedToCartItem)
             setCartItemInstances([...cartItemInstances, addedToCartItem])
-            setNeedFetch(!needFetch)
+            setNeedFetch(!needFetch);
+            setAnchorEl(e.target);
           } else {
             const error = await res.json()
             setErrors(error.message)
@@ -128,7 +128,12 @@ function App() {
 
         <Switch>
           <Route exact path="/">
-            <Home  showItemPage={showItemPage} setShowItemPage={setShowItemPage} onAddToCartClick={onAddToCartClick}/>
+            <Home  showItemPage={showItemPage} 
+            setShowItemPage={setShowItemPage} 
+            onAddToCartClick={onAddToCartClick}
+            anchorEl={anchorEl}
+            setAnchorEl={setAnchorEl}
+            />
           </Route>
 
           <Route path="/shoppingcart" >
@@ -146,6 +151,8 @@ function App() {
           <Route path="/items/:type/:id">
             <ItemDetailPage showItemPage={showItemPage} 
                             onAddToCartClick={onAddToCartClick}
+                            anchorEl={anchorEl}
+                            setAnchorEl={setAnchorEl}
                             />
           </Route>
 

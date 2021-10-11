@@ -5,7 +5,7 @@ import HomeICItemCard from "./HomeICItemCard";
 import Grid from '@material-ui/core/Grid';
 
 
-function HomeICGlue({glueOnDisplay, onAddToCartClick}) {
+function HomeICGlue({glueOnDisplay, onAddToCartClick, anchorEl, setAnchorEl}) {
 
     return (
       <div >
@@ -13,7 +13,10 @@ function HomeICGlue({glueOnDisplay, onAddToCartClick}) {
         <Grid container spacing={2}>
             {glueOnDisplay.map((glueItem)=><HomeICItemCard key={glueItem.id} 
                                                            onAddToCartClick={onAddToCartClick} 
-                                                           item={glueItem}/>)}
+                                                           item={glueItem}
+                                                           anchorEl={anchorEl}
+                                                           setAnchorEl={setAnchorEl}
+                                                           />)}
 
         </Grid>
       </div>
