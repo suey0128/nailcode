@@ -3,7 +3,7 @@ import HomeItemContainer from "./HomeItemContainer";
 
 import React, { useState, useEffect } from "react";
 
-function Home ({showItemPage, setShowItemPage, onAddToCartClick}) {
+function Home ({showItemPage, setShowItemPage, onAddToCartClick, anchorEl, setAnchorEl}) {
 
     //state for the 3 types of items from the database
     const [pressOnArr, setPressOnArr] = useState([])
@@ -134,6 +134,8 @@ function Home ({showItemPage, setShowItemPage, onAddToCartClick}) {
                                 handCareOnDisplay={handCareOnDisplay}
                                 pressOnArr={pressOnArr}
                                 onAddToCartClick={onAddToCartClick}
+                                anchorEl={anchorEl}
+                                setAnchorEl={setAnchorEl}
 
                                 />
         </div>

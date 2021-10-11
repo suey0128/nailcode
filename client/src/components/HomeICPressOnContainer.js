@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function HomeICPressOnContainer({pressOnOnDisplay, setPressOnOnDisplay, pressOnArr, onAddToCartClick}) {
+function HomeICPressOnContainer({pressOnOnDisplay, setPressOnOnDisplay, pressOnArr, onAddToCartClick, anchorEl, setAnchorEl}) {
   const [filteredArr, setFilteredArr] = useState([])
   const [filteredArrWithRepetition, setFilteredArrWithRepetition] = useState([])
   //state to track how many checkboxes are check
@@ -118,6 +118,8 @@ function HomeICPressOnContainer({pressOnOnDisplay, setPressOnOnDisplay, pressOnA
                     {pressOnOnDisplay.map((pressOnItem)=><HomeICItemCard key={pressOnItem.id} 
                                                                           item={pressOnItem}
                                                                           onAddToCartClick={onAddToCartClick}
+                                                                          anchorEl={anchorEl}
+                                                                          setAnchorEl={setAnchorEl}
                                                                           />)}
                 </Grid>
              </div>
