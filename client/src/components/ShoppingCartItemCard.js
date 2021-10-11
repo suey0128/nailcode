@@ -1,14 +1,14 @@
 import React, { useState } from "react";
+import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
 
 
 function ShoppingCartItemCard ({itemInfo, setNeedFetch, needFetch}) {
-    console.log(itemInfo)
     const [quantityInput, setQuantityInput] = useState(itemInfo.quantity)
     const [isEditingQuantity, setisEditingQuantity] = useState(false)
 
     const handleQuantityChange = (e) => {
         e.preventDefault();
-        // console.log(typeof(quantityInput))
         //patch
         // if quantity === 0, destroy the cart_item instance, fetch again  for display 
         if (parseInt(quantityInput) === 0 ){
@@ -51,26 +51,41 @@ function ShoppingCartItemCard ({itemInfo, setNeedFetch, needFetch}) {
         }
     }
 
+    const subtotal = itemInfo.item.price * quantityInput
+
     return (
-        <div>
-            <img className="img-in-cart" src={itemInfo.item.image} alt={itemInfo.item.name}/>
-            <h3>name: {itemInfo.item.name}</h3>
-            <p>price: ${itemInfo.item.price}</p>
-            { isEditingQuantity ? 
-            (<form onSubmit={handleQuantityChange}>
-                <label>Quantity: </label>
-                <input name="quantityInCart" type="text" value={quantityInput} onChange={(e)=> {setQuantityInput(e.target.value)}}/>
-                <input name="Edit Quantity" type="submit" />
-            </form>)
-            :
-            (<div>
-                <p>Quantity: {quantityInput}</p>
-                <button onClick={()=>{setisEditingQuantity(true)}}>Edit quantity</button>
-            </div>)
-            }
+        <>
+            <Grid container spacing={2} >
+                <Grid item xs={6} md={4}>
+                <img className="img-in-cart" src={itemInfo.item.image} alt={itemInfo.item.name}/>
+                </Grid>
 
+                <Grid item xs={6} md={8}  className='shopping-cart-info-container'>
+                    <h3 >{itemInfo.item.name}</h3>
+                    <p> ${itemInfo.item.price}</p>
+                    { isEditingQuantity ? 
+                    (
+                    <form  onSubmit={handleQuantityChange} >
+                        <div className="shopping-cart-quantity-edit">
+                            <label >Quantity: </label>
+                            <input  name="quantityInCart" type="text" value={quantityInput} onChange={(e)=> {setQuantityInput(e.target.value)}}/>
+                        </div>
+                        <button className="shopping-cart-quantity-btn" type="submit" > Save </button>
+                    </form>
+                    )
+                    :
+                    (<div >
+                        <p>Quantity: {quantityInput}</p>
+                        <button className="shopping-cart-quantity-btn" onClick={()=>{setisEditingQuantity(true)}}>Edit quantity</button>
+                    </div>)
+                    }
+                    <p className='shopping-cart-subtotal'>Subtotal: $ {subtotal}</p>
 
-        </div>
+                </Grid>
+            </Grid>
+            <Divider />
+            <br></br>
+        </>                        
     )
   }
   
