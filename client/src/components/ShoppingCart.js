@@ -16,7 +16,7 @@ function ShoppingCart({currentUser, needFetch, setNeedFetch}) {
   // console.log (currentUser.shopping_cart.all_items_in_cart)
 
   return (
-    <div>
+    <div className="shopping-cart-container">
         {shoppingCartItemList.length > 0 ?
         <div>
         {shoppingCartItemList.map(i => <ShoppingCartItemCard key={`${i.item.item_type}-${i.item.id}`}
@@ -24,10 +24,14 @@ function ShoppingCart({currentUser, needFetch, setNeedFetch}) {
                                                             setNeedFetch={setNeedFetch}
                                                             needFetch={needFetch}
         />)} 
-        <h3>Total: ${currentUser.shopping_cart.total_amount}</h3>
-        <Link to="/checkout">
-          <button >Check Out</button>
-        </Link>
+
+        <div className="shopping-cart-checkout-container">
+          <h3 style={{ 'margin-bottom':'10px' }}>Total: ${currentUser.shopping_cart.total_amount}</h3>
+          <Link to="/checkout">
+            <button >Check Out</button>
+          </Link>
+        </div>
+
         </div>
         : 
         (<h2>Your cart is empty</h2>)}
