@@ -14,24 +14,13 @@ import Review from './Review';
 
 import { useState } from 'react';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'relative',
   },
   layout: {
+    marginTop: '60px',
+    marginBottom: '60px',
     width: 'auto',
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
@@ -39,16 +28,6 @@ const useStyles = makeStyles((theme) => ({
       width: 600,
       marginLeft: 'auto',
       marginRight: 'auto',
-    },
-  },
-  paper: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(6),
-      marginBottom: theme.spacing(6),
-      padding: theme.spacing(3),
     },
   },
   stepper: {
@@ -61,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
+    backgroundColor: '#000',
+    color: '#fff',
   },
 }));
 
@@ -83,7 +64,6 @@ function getStepContent(step, passToAddress, passToPayment, currentUser) {
 }
 
 export default function Checkout({currentUser}) {
-  // console.log(currentUser)
   const [fName, setFname] = useState(currentUser.first_name)
   const [lName, setLname] = useState(currentUser.last_name)
   const [address, setAddress] = useState(currentUser.address)
@@ -132,7 +112,6 @@ export default function Checkout({currentUser}) {
     };
   }
 
-// console.log(currentUser)
 
   const handleNext = () => {
     // next btn for address form, PATCH ADD
@@ -282,7 +261,6 @@ export default function Checkout({currentUser}) {
     <React.Fragment>
       <CssBaseline />
       <main className={classes.layout}>
-        <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
             Checkout
           </Typography>
@@ -309,24 +287,22 @@ export default function Checkout({currentUser}) {
                 {getStepContent(activeStep, passToAddress, passToPayment, currentUser)}
                 <div className={classes.buttons}>
                   {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
+                    <button onClick={handleBack} className={classes.button}>
                       Back
-                    </Button>
+                    </button>
                   )}
-                  <Button
+                  <button
                     variant="contained"
                     color="primary"
                     onClick={handleNext}
                     className={classes.button}
                   >
                     {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                  </Button>
+                  </button>
                 </div>
               </React.Fragment>
             )}
           </React.Fragment>
-        </Paper>
-        <Copyright />
       </main>
     </React.Fragment>
   );
