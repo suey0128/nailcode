@@ -9,7 +9,6 @@ function HomeICItemCard({item, onAddToCartClick}) {
     let history = useHistory();
 
     const handleItemPhotoClick = () => {
-        // console.log(item.color)
         if (item.color) { //press_on
             history.push(`/items/press_ons/${item.id}`);
         } else if (item.strength) { //glue
@@ -21,17 +20,19 @@ function HomeICItemCard({item, onAddToCartClick}) {
 
     return (
  
-        <Grid item xs={6} sm={3}>
-                <div >
-  
-                    <img onClick={handleItemPhotoClick} className="img-in-card" src={item.image} alt={item.name}/>
+        <Grid item xs={12} sm={6} md={3}>
+            <div >
+                <img onClick={handleItemPhotoClick} className="img-in-card" src={item.image} alt={item.name}/>
 
-                    <div className="info-container">
-                        <h3 className="item-name">{item.name}</h3>
-                        <p>$ {item.price}</p>
+                <div className="info-container">
+                    <div>
+                    <h3 >{item.name}</h3>
+                    <p>$ {item.price}</p>
                     </div>
                     <button onClick={(e)=> onAddToCartClick(e,1,item)}>Add to Cart</button>
                 </div>
+                
+            </div>
         </Grid>
 
     )

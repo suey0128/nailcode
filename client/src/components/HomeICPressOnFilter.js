@@ -1,7 +1,32 @@
 
+import Box from "@material-ui/core/Box";
+import Divider from "@material-ui/core/Divider";
+
+
 function HomeICPressOnFilter({onHandleColorCheckBoxChange, onHandleShapeCheckBoxChange, onHandleAddOnCheckBoxChange}) {
 
+    // const colors = [
+    //     "all", "white", "pink", "nude", "purple", "red", "green", "peach", "chrome", "black" 
+    // ]
 
+    // const shapes = [
+    //     "coffin", "round", "stiletto", "square"
+    // ]
+
+    // const addOns = [
+    //     "jewels", "others"
+    // ]
+
+    // const colorFilter = (colors) =>  (
+    //     <>
+    //     {colors.map(color => (
+    //         <>
+    //         <input type="checkbox" id={color} name={color} value={color}  onChange={onHandleColorCheckBoxChange}/>
+    //         <label >{color === 'all' ? 'multi colors' : {color}}</label>
+    //         </>
+    //     ))}
+    //        </>
+    // )
 
     return (
         <div>
@@ -27,8 +52,6 @@ function HomeICPressOnFilter({onHandleColorCheckBoxChange, onHandleShapeCheckBox
                 <label >chrome</label>
                 <input type="checkbox" id="black" name="black" value="black" onChange={onHandleColorCheckBoxChange}/>
                 <label >black</label>
-                {/* <input type="checkbox" id="others" name="others" value="others" onChange={onHandleColorCheckBoxChange}/>
-                <label >others</label> */}
             </div>
 
             <div className="shape-filter">
@@ -55,6 +78,43 @@ function HomeICPressOnFilter({onHandleColorCheckBoxChange, onHandleShapeCheckBox
 
 
         </div>
+   
+        // <Box
+        //     sx={{ width: 250 }}
+        //     role="filter"
+        //     > 
+        //     <div>
+        //         <p className="pressOnPageLabels">Color</p>
+        //         {colorFilter(colors)}
+        //     </div>
+
+        //     <Divider />
+
+        //     <div>
+        //         <p className="pressOnPageLabels">Shape</p>
+        //         {shapes.map(shape => {
+        //             <>
+        //                 <input type="checkbox" id={shape} name={shape} value={shape}  onChange={onHandleShapeCheckBoxChange}/>
+        //                 <label >{shape}</label>
+        //             </>
+        //         })}
+        //     </div>
+
+        //     <Divider />
+
+        //     <div>
+        //         <p className="pressOnPageLabels">Add ons</p>
+        //         {addOns.map(addon => {
+        //             <>
+        //                 <input type="checkbox" id={addon} name={addon} value={addon}  onChange={onHandleAddOnCheckBoxChange}/>
+        //                 <label >{addon}</label>
+        //             </>
+        //         })}
+        //     </div>
+            
+        // </Box>
+
+
     )
   }
   

@@ -21,7 +21,7 @@ function HomeICHandCareContainer({handCareOnDisplay, onAddToCartClick}) {
 
     return (
         <div className={classes.root}>
-            <h1 className="homeContainerTitle">Hand Care</h1>
+            <h1 className="product-page-title">Hand Care Products</h1>
             <Grid container spacing={3}>
                 {handCareOnDisplay.map((handCareItem)=><HomeICItemCard key={handCareItem.id} 
                                                                         onAddToCartClick={onAddToCartClick}

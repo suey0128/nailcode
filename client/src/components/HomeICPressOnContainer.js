@@ -22,6 +22,9 @@ function HomeICPressOnContainer({pressOnOnDisplay, setPressOnOnDisplay, pressOnA
   //state to track how many checkboxes are check
   const [checkedBox, setCheckBox] = useState(0)
 
+  //handle filter sidebar show up or not
+  const [showSidebar, setShowSidebar] = useState(false)
+
 
   useEffect(()=>{
     // console.log("filteredArrWithRepetition:",filteredArrWithRepetition,"filteredArr:",filteredArr)
@@ -32,7 +35,6 @@ function HomeICPressOnContainer({pressOnOnDisplay, setPressOnOnDisplay, pressOnA
     }
   },[filteredArr])
 
-console.log(pressOnOnDisplay)
   //handle all types of check boxes call back
   let obj = {}
   const handleAllCheckBox = (e, type) => {
@@ -92,14 +94,27 @@ console.log(pressOnOnDisplay)
 
     return (
         <div>
-           <h1 className="homeContainerTitle">Press Ons</h1>
-            <HomeICPressOnFilter onHandleColorCheckBoxChange={onHandleColorCheckBoxChange}
-                                 onHandleShapeCheckBoxChange={onHandleShapeCheckBoxChange}
-                                 onHandleAddOnCheckBoxChange={onHandleAddOnCheckBoxChange}
-                                />
-            
+            <div className="title-filter-container">
+              <h1 className="product-page-title">Press Ons Products</h1>
+              {showSidebar ? 
+                <button onClick={()=>{setShowSidebar(false)}}>Hide Filters</button> 
+              :
+                <button onClick={()=>{setShowSidebar(true)}}>Filters</button> 
+              }
+            </div>
+            <React.Fragment>
+            {showSidebar ? 
+              <HomeICPressOnFilter onHandleColorCheckBoxChange={onHandleColorCheckBoxChange}
+                                  onHandleShapeCheckBoxChange={onHandleShapeCheckBoxChange}
+                                  onHandleAddOnCheckBoxChange={onHandleAddOnCheckBoxChange}
+                                  /> 
+              :null
+            }
+            </React.Fragment>
+
+
             <div className={classes.root}>
-                <Grid container spacing={3}>
+                <Grid container spacing={2}>
                     {pressOnOnDisplay.map((pressOnItem)=><HomeICItemCard key={pressOnItem.id} 
                                                                           item={pressOnItem}
                                                                           onAddToCartClick={onAddToCartClick}
