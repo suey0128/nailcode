@@ -7,7 +7,6 @@ function Auth({setCurrentUser}){
     const [password,setPassword]=useState('')
     const [passwordConfirmation,setPasswordConfirmation]=useState('')
     const [email,setEmail]=useState('')
-    // const [birthday,setBirthday]=useState('')
     const [errors, setErrors] = useState(null)
 
     const history = useHistory();
@@ -29,7 +28,6 @@ function Auth({setCurrentUser}){
             zip: "00000", 
             country: "n/a"
         }
-        // console.log(user)
         const res = await fetch(`http://localhost:3000/users`,{
             method: 'POST',
             credentials: "include",
@@ -50,8 +48,10 @@ function Auth({setCurrentUser}){
     };
     return(
         <>
-            <h1 className="signupPage">Sign up</h1>
+  
            <Form onSubmit={handleSubmit}>
+                <h1 >Sign up</h1>
+                <br></br>
                 <Input
                 type= "text"
                 placeholder="User Name"
@@ -64,27 +64,20 @@ function Auth({setCurrentUser}){
                 value={email}
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}/>
-                {/* <Input
-                type= "text"
-                placeholder="Birthday (optional)"
-                value={birthday}
-                name="birthday"
-                onChange={(e) => setBirthday(e.target.value)}/> */}
                 <Input
-                type= "text"
+                type= "password"
                 placeholder="Password"
                 value={password}
                 name="password"
                 onChange={(e) => setPassword(e.target.value)}/>
                 <Input
-                type= "text"
+                type= "password"
                 placeholder="Confirm Password"
                 value={passwordConfirmation}
                 name="password_confirmation"
                 onChange={(e) => setPasswordConfirmation(e.target.value)}/>
-                <Input submit type ="submit" value="Sign up"/>
-
-                {errors?errors.map(error => <div>{error}</div>):null}
+                <br></br>
+                <button submit type ="submit" value="Sign up" className="submit-btn">Sign up</button>
            </Form> 
           
         </> 
