@@ -1,36 +1,35 @@
-import {Link} from "react-router-dom";
+import Grid from '@material-ui/core/Grid';
 
 function HomeSearchAndSort ({onSearchChange, onSortBarChange, setShowItemPage}) {
    ;
     return (
-        <div>
+        <Grid container className="search-sort-container">
             
-            <div className="look-for-div">
-                <p className="sText">Search For ...</p>
-                <button  className="homePageButton" onClick={()=>{setShowItemPage("pressOn")}}>Press On</button>
+            <Grid item xs={12} md={6} className="category-container">
+                <h3 className="sText">Category: </h3>
+                <button  className="category-btn" onClick={()=>{setShowItemPage("pressOn")}}>Press On</button>
                 <button  className="homePageButton" onClick={()=>{setShowItemPage("glue")}}>Glue</button>
                 <button  className="homePageButton"  onClick={()=>{setShowItemPage("handCare")}}>Hand Care</button>
-            </div>
+            </Grid>
             
 
 
-            <div className="search-div">
-                <input id="search-bar" type="text" placeholder="Search..." 
+            <Grid item xs={12} md={3} >
+                <input id="search-bar" className="search-sort-bar" type="text" placeholder="Search..." 
                     onChange={(e)=>{onSearchChange(e.target.value)}}/>
                     
-                </div>
-                    <select name="SortBy" id="SortBy" onChange={(e)=>{onSortBarChange(e.target.value)}}>
-                        <option value="sortBy">Sort by</option>
-                        {/* <option value="bestSelling">Best Selling</option> */}
-                        <option value="priceLowtoHigh">Price: Low to High</option>
-                        <option value="priceHightoLow">Price: High to Low</option>
-                    </select>
-                <div>
-                <br></br>
-            </div>
+            </Grid>
+
+            <Grid item xs={12} md={3} >
+                <select name="SortBy" className="search-sort-bar" id="SortBy" onChange={(e)=>{onSortBarChange(e.target.value)}}>
+                    <option value="sortBy">Sort by</option>
+                    <option value="priceLowtoHigh">Price: Low to High</option>
+                    <option value="priceHightoLow">Price: High to Low</option>
+                </select>
+            </Grid>
 
 
-        </div>
+        </Grid>
     )
   }
   
