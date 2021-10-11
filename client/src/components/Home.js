@@ -114,13 +114,14 @@ function Home ({showItemPage, setShowItemPage, onAddToCartClick}) {
             sortingPriceHighToLow(handCareOnDisplay, setHandCareOnDisplay, "LowToHigh")
         }
     }
+
        
     return (
         <div className="home-container">
             <div className="home-banner">
                 <img className="home-banner-img" src="https://trade.opiuk.com/wp-content/uploads/sites/2/2018/07/3.opi_.grease-red-nail-banner.jpg" alt="" />
             </div>
-            
+
             <HomeSearchAndSort onSearchChange={onSearchChange}
                                onSortBarChange={onSortBarChange}
                                setShowItemPage={setShowItemPage}
