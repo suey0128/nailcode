@@ -218,6 +218,12 @@ button {
   width: 15vw;
 }
 
+/* LOGIN AND SIGNUP */
+.submit-btn {
+  height: 40px;
+  width: 100px;
+}
+
 @media screen and (max-width: 768px) {
   /* Header */
   .navbar-container {
