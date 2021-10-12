@@ -2,6 +2,7 @@ import PurchaseDetailCard from "./PurchaseDetailCard"
 
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react'
+import Grid from '@material-ui/core/Grid';
 
 function PurchaseDetail () {
     const [isPurchaseLoaded, setIsPurchaseLoaded] = useState(false)
@@ -28,19 +29,17 @@ function PurchaseDetail () {
   if (!isPurchaseLoaded) return <h2>Loading...</h2>;
 
     return (
-        <div>
-            <h2>Order Details</h2>
-            <p>Order #{oderDetails.id}</p>
-            <p>Order date#{oderDetails.updated_at}</p>
+        <div className="purchase-detail-container">
+            <h2>Order #{oderDetails.id}</h2>
+            <p>Order date: {oderDetails.updated_at.slice(0,10)}</p>
             <p>Payment:</p>
-            <p>Total: {oderDetails.payment.total}</p>
-            <p>Subtotal: {oderDetails.payment.subtotal}</p>
-            <p>Tax: {oderDetails.payment.tax}</p>
-            <p>Shipping: {oderDetails.payment.shipping}</p>
-            {
-            oderDetails.all_items_in_cart.map(i =>  <PurchaseDetailCard key={i.id} purchasedItem={i}/>)
-               
-            }
+            <p>Total: ${oderDetails.payment.total.toFixed(2)}</p>
+            <p>Subtotal: ${oderDetails.payment.subtotal}</p>
+            <p>Tax: ${oderDetails.payment.tax}</p>
+            <p>Shipping: ${oderDetails.payment.shipping}</p>
+              {
+              oderDetails.all_items_in_cart.map(i =>  <PurchaseDetailCard key={i.id} purchasedItem={i}/>)  
+              }
         </div>
     )
   }

@@ -76,6 +76,7 @@ button {
 }
 
 /* Home Pgae */
+.purchase-detail-container,
 .profile-container,
 .home-container,
 .shopping-cart-container {
@@ -260,6 +261,11 @@ footer {
   margin: 0px 10px;
 }
 
+/* PURCHASE DETAILS */
+.purchase-detail-item-container {
+  margin-top: 5px;
+}
+
 @media screen and (max-width: 768px) {
   /* Header */
   .navbar-container {
@@ -278,6 +284,7 @@ footer {
   }
 
   /* Home */
+  .purchase-detail-container,
   .profile-container,
   .home-container,
   .product-detail-container ,
