@@ -7,7 +7,6 @@ function Auth({setCurrentUser}){
     const [password,setPassword]=useState('')
     const [passwordConfirmation,setPasswordConfirmation]=useState('')
     const [email,setEmail]=useState('')
-    const [errors, setErrors] = useState(null)
 
     const history = useHistory();
 
@@ -38,7 +37,6 @@ function Auth({setCurrentUser}){
         });
         const userData = await res.json();
         if(res.ok){
-            console.log(userData)
             setCurrentUser(userData)
             history.push('/')
         } else {
@@ -77,7 +75,7 @@ function Auth({setCurrentUser}){
                 name="password_confirmation"
                 onChange={(e) => setPasswordConfirmation(e.target.value)}/>
                 <br></br>
-                <button submit type ="submit" value="Sign up" className="submit-btn">Sign up</button>
+                <button type ="submit" value="Sign up" className="submit-btn">Sign up</button>
            </Form> 
           
         </> 

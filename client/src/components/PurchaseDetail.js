@@ -2,14 +2,12 @@ import PurchaseDetailCard from "./PurchaseDetailCard"
 
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react'
-import Grid from '@material-ui/core/Grid';
 
 function PurchaseDetail () {
     const [isPurchaseLoaded, setIsPurchaseLoaded] = useState(false)
     const [oderDetails, setOrderDetails] = useState(null)
 
     const params = useParams();
-    // console.log(params) //=>{purchase_id: "2"}
 
 // fetch the purchase
   useEffect(() => {
@@ -23,8 +21,6 @@ function PurchaseDetail () {
     }
     fetchPurchase()
   },[])
-
-  console.log(oderDetails)
 
   if (!isPurchaseLoaded) return <h2>Loading...</h2>;
 

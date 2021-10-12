@@ -1,4 +1,5 @@
 import React from 'react';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import { NavLink, useHistory } from 'react-router-dom';
 
@@ -30,14 +31,14 @@ import { NavLink, useHistory } from 'react-router-dom';
             {currentUser ? 
               <div className="header-right">
                 <NavLink to="/shoppingcart" className="nav-link" style={{ textDecoration: 'none' }} activeStyle={{fontWeight: "bold"}}>
-                Shopping Cart
+                  <ShoppingCartIcon style={{ 'fill': '#fff'}}/>
                 </NavLink>
 
                 <NavLink to="/me" className="nav-link" style={{ textDecoration: 'none' }} activeStyle={{fontWeight: "bold"}}>
                 Profile
                 </NavLink> 
 
-                <button  className="nav-link" onClick={handleLogout}>Logout</button>
+                <button  className="logout-btn" onClick={handleLogout}>Logout</button>
 
               </div> 
               : 

@@ -10,7 +10,7 @@ function HomeICGlue({glueOnDisplay, onAddToCartClick, anchorEl, setAnchorEl}) {
     return (
       <div >
         <h1 className="product-page-title">Glue Products</h1>
-        <Grid container spacing={2}>
+        <Grid container spacing={5}>
             {glueOnDisplay.map((glueItem)=><HomeICItemCard key={glueItem.id} 
                                                            onAddToCartClick={onAddToCartClick} 
                                                            item={glueItem}

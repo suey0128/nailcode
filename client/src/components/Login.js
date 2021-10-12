@@ -5,7 +5,6 @@ import {Input, Form} from "./Styled";
 function Login({setCurrentUser}){
     const [username, setUserName] = useState('')
     const [password, setPassword] = useState('')
-    const [errors, setErrors] = useState(null)
 
     const history = useHistory();
 
@@ -25,7 +24,6 @@ function Login({setCurrentUser}){
         });
         const userData = await res.json();
         if(userData.id){
-            console.log(userData)
             setCurrentUser(userData)
             history.push('/')
         } else {
@@ -54,7 +52,7 @@ function Login({setCurrentUser}){
                     name="password"
                     onChange={(e) => setPassword(e.target.value)}></Input>
                 <br></br>
-                <button submit type="submit" value="Log in" className="submit-btn">Login</button>
+                <button type="submit" value="Log in" className="submit-btn">Login</button>
 
             </Form>
         </>

@@ -12,7 +12,6 @@ function ShoppingCartItemCard ({itemInfo, setNeedFetch, needFetch}) {
         //patch
         // if quantity === 0, destroy the cart_item instance, fetch again  for display 
         if (parseInt(quantityInput) === 0 ){
-            console.log('its 0')
            async function deleteItemInCart() {
                const res = await fetch(`cart_items/${itemInfo.cart_item_id}`,{
                    method: 'DELETE'
