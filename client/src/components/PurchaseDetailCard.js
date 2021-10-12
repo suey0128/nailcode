@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-
+import Grid from '@material-ui/core/Grid';
 
 function PurchaseDetailCard ({purchasedItem}) {
     console.log(purchasedItem)
@@ -18,13 +18,21 @@ function PurchaseDetailCard ({purchasedItem}) {
     }
 
     return (
-        <div>
-           
-            <img onClick={handleItemPhotoClick} src={purchasedItem.item.image} alt={purchasedItem.item.name}/> 
-
-            <p>{purchasedItem.item.name}</p>
-            <p>purchased quantity: {purchasedItem.quantity}</p>
-        </div>
+        <>
+            <br></br>
+            <Grid container spacing={2} className="purchase-detail-item-container">
+                <Grid item xs={6} md={4}>
+                    <img  className="img-in-cart" onClick={handleItemPhotoClick} src={purchasedItem.item.image} alt={purchasedItem.item.name}/> 
+                </Grid>
+                <Grid item xs={6} md={8}  className='shopping-cart-info-container'>
+                <h3>{purchasedItem.item.name}</h3>
+                <p>${purchasedItem.item.price}</p>
+                <p>Quantity: {purchasedItem.quantity}</p>
+                <p>Item total: ${purchasedItem.item_total}</p>
+                </Grid>
+            </Grid>
+  
+        </>
     )
   }
   

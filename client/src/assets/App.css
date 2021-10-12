@@ -76,6 +76,8 @@ button {
 }
 
 /* Home Pgae */
+.purchase-detail-container,
+.profile-container,
 .home-container,
 .shopping-cart-container {
   padding: 30px 40px;
@@ -230,6 +232,40 @@ footer {
   color: #fff;
 }
 
+/* PROFILE PAGE */
+.profile-user-info-container {
+  margin-bottom: 20px;
+}
+
+
+.profile-btn {
+  height: 35px;
+  width: 130px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.pd-form-input {
+  padding: 2px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.profile-edit-btn-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-edit-btn-container button {
+  margin: 0px 10px;
+}
+
+/* PURCHASE DETAILS */
+.purchase-detail-item-container {
+  margin-top: 5px;
+}
+
 @media screen and (max-width: 768px) {
   /* Header */
   .navbar-container {
@@ -248,6 +284,8 @@ footer {
   }
 
   /* Home */
+  .purchase-detail-container,
+  .profile-container,
   .home-container,
   .product-detail-container ,
   .shopping-cart-container {
@@ -307,6 +345,10 @@ footer {
     object-fit: cover;
   }
 
+  .profile-btn-container {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 @media screen and (max-width: 600px) {
