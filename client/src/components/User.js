@@ -11,8 +11,11 @@ function User ({currentUser, setCurrentUser, setNeedFetch, needFetch}) {
   },[])
 
     return (
-        <div>
+        <div className="profile-container">
+
             <UserInfo currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+            
+            <h2>Order History</h2>
             {
                 currentUser.purchases.map(purchase=> <UserPurchase key={purchase.id} purchase={purchase}/>)
             }

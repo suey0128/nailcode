@@ -6,9 +6,9 @@ export const Form = styled.form`
   display: flex;
   align-items: center;
   justify-content: start;
-  padding-top: 15vh;
+  padding-top: 15px;
   flex-direction: column;
-  height: 100vh;
+  // height: 100vh;
   background: white;
 `;
 

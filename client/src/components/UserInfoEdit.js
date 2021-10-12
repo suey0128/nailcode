@@ -11,7 +11,6 @@ function UserInfoEdit ({ currentUser, setCurrentUser, setIsEditing }) {
     const [newState, setNewState] = useState(currentUser.state)
     const [newZip, setNewZip] = useState(currentUser.zip)
     const [newCountry, setNewCountry] = useState(currentUser.country)
-    const [newBirthday, setNewBirthday] = useState(currentUser.birthday)
 
 
     console.log (currentUser)
@@ -20,7 +19,7 @@ function UserInfoEdit ({ currentUser, setCurrentUser, setIsEditing }) {
         //PATCH User
         let newUserInfo = {
             username: newUsername, first_name: newFirstName, last_name: newLastName, email: newEmail, 
-            birthday: newBirthday, address: newAddress, city: newCity, state: newState, country: newCountry, zip: newZip
+            address: newAddress, city: newCity, state: newState, country: newCountry, zip: newZip
         } 
         async function updateUser() {
           const res = await fetch(`/users/${currentUser.id}`, {
@@ -43,7 +42,7 @@ function UserInfoEdit ({ currentUser, setCurrentUser, setIsEditing }) {
 
     return (
         <div>
-            <h2>Edit profile</h2>
+            <h2 style={{ 'text-align': 'center' }}>Edit profile</h2>
            <Form onSubmit={handleProfileEdit}>
 
                 <Input
@@ -116,22 +115,16 @@ function UserInfoEdit ({ currentUser, setCurrentUser, setIsEditing }) {
                 name="address"
                 value={newCountry}
                 onChange={(e) => setNewCountry(e.target.value)}
-                /> 
-                
+                />              
 
-                <Input
-                type= "text"
-                placeholder="Birthday"
-                name="address"
-                value={newBirthday}
-                onChange={(e) => setNewBirthday(e.target.value)}
-                />               
-
-                <Input submit type ="submit" value="Submit" />
-
+                <div className="profile-edit-btn-container"> 
+                <button onClick={()=>{setIsEditing(false)}}> Go Back </button>
+                <button submit type ="submit"> Save </button>
+              
+                </div>
            </Form> 
 
-           <button onClick={()=>{setIsEditing(false)}}> Go Back </button>
+           
 
         </div>
     )

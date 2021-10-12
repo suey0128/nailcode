@@ -1,5 +1,5 @@
 import UserInfoEdit from "./UserInfoEdit";
-// import {Input, Form} from "./Styled";
+import Grid from '@material-ui/core/Grid';
 
 import {useState } from "react"
 
@@ -34,61 +34,61 @@ function UserInfo ({currentUser, setCurrentUser}) {
 
     return (
 
-        <>
+        <div className="profile-user-info-container">
+        {isEditing ? null : <h2 className="userInfoTitle"> Profile </h2> }
+        
         {isEditing ?
             <div>
                  <UserInfoEdit currentUser={currentUser} setCurrentUser={setCurrentUser} setIsEditing={setIsEditing}/> 
             </div>
             :
-            <div className="userInfoPage">
-                <h2 className="userInfoTitle"> UserInfo</h2>
-                <p className="userinfo">Username:</p> <p>{currentUser.username}</p>
-
+            <Grid container spacing={2} >
+              <Grid item xs={12} md={10} >
+                <p className="userinfo">Username: {currentUser.username}</p>
                 <p className="userinfo">Default Shipping Address: </p>
-                <p className="userinfo">Address:</p> <p>{currentUser.address}</p>
-                <p className="userinfo"> Name: {currentUser.first_name} {currentUser.last_name}</p>
-                <p className="userinfo">City: </p> <p>{currentUser.city}</p>
-                <p className="userinfo">State: </p> <p>{currentUser.state}</p>
-                <p className="userinfo">Country: </p> <p>{currentUser.country}</p>
-                <p className="userinfo">Birthday: </p> <p>{currentUser.birthday}</p>
+                <p className="userinfo"> {currentUser.first_name} {currentUser.last_name}</p>
+                <p className="userinfo">Address: {currentUser.address} {currentUser.city} {currentUser.state} {currentUser.country}</p>
+              </Grid>
 
-              
-                <button onClick={()=>{setIsEditing(true)}}>Edit profile</button>
+              <Grid item xs={12} md={2} className="profile-btn-container">
+                <button className="profile-btn"  onClick={()=>{setIsEditing(true)}}>Edit profile</button>
 
                 {changingPassword ? 
-                <div> 
-                    <form onSubmit={handlePasswordChange}>
-
-                    <input
-                    type= "text"
-                    placeholder="password"
-                    name="password"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    />
-
-                    <input
-                    type= "text"
-                    placeholder="password_confirmation"
-                    name="password_confirmation"
-                    value={newPasswordConfirmation}
-                    onChange={(e) => setNewPasswordConfirmation(e.target.value)}
-                    />
-
-                    <input
-                    type= "submit" 
-                    value="Save"/>
-
-                    </form>
-                    </div>
+                null
                 : 
-                <button onClick={()=>{setChangingPassword(true)}}>Change password</button>
+                <button className="profile-btn" onClick={()=>{setChangingPassword(true)}}>Change password</button>
                 }
+             </Grid>
 
-                <h2>Order History</h2>
-            </div>
+             {changingPassword ? 
+             <Grid item xs={12} > 
+                <form onSubmit={handlePasswordChange}>
+
+                  <input className="pd-form-input"
+                  type= "password"
+                  placeholder="password"
+                  name="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  />
+
+                  <input className="pd-form-input"
+                  type= "password"
+                  placeholder="password_confirmation"
+                  name="password_confirmation"
+                  value={newPasswordConfirmation}
+                  onChange={(e) => setNewPasswordConfirmation(e.target.value)}
+                  />
+
+                  <button type= "submit" value="Save"> Save </button>
+
+                </form>
+              </Grid >
+              : null
+              }
+            </Grid>
         }
-        </>
+        </div>
      
     )
   }
