@@ -1,12 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
@@ -89,8 +86,6 @@ export default function Checkout({currentUser}) {
   const [invoiceNum, setInvoiceNum] = useState("")
 
 
-  const [errors, setErrors] = useState([]);
-
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -105,10 +100,9 @@ export default function Checkout({currentUser}) {
     });
     if (res.ok) {
       const connectingCurrentCart = await res.json();
-      console.log('connecting current_cart instance', connectingCurrentCart)
     } else {
       const err = await res.json()
-      setErrors(err.errors)
+      alert(err.errors)
     };
   }
 
@@ -136,7 +130,6 @@ export default function Checkout({currentUser}) {
         });
         if (res.ok) {
           const updatedShoppingCart = await res.json();
-          console.log('address patched in shopping_cart', updatedShoppingCart)
           setActiveStep(activeStep + 1)
         } else {
           const err = await res.json()
@@ -156,7 +149,6 @@ export default function Checkout({currentUser}) {
           });
           if (res.ok) {
             const updatedUser = await res.json();
-            console.log('address patched in user', updatedUser)
           } else {
             const err = await res.json()
             alert(err.errors)
@@ -196,12 +188,11 @@ export default function Checkout({currentUser}) {
         });
         if (res.ok) {
           const payment = await res.json();
-          console.log('new payment instance', payment)
           setInvoiceNum(payment.shopping_cart_id)
           setActiveStep(activeStep + 1)
         } else {
           const err = await res.json()
-          setErrors(err.errors)
+          alert(err.errors)
         };
       }
       createPayment();
@@ -211,9 +202,9 @@ export default function Checkout({currentUser}) {
         const res = await fetch(`http://localhost:3000/current_carts/${currentUser.current_cart.id}`, {
           method: 'DELETE'
         })
-        if (res.ok) {
-          console.log("deleted")
-        }
+        // if (res.ok) {
+        //   console.log("deleted")
+        // }
       }
       deleteCurrentCart();
 
@@ -237,11 +228,10 @@ export default function Checkout({currentUser}) {
         });
         if (res.ok) {
           const emptyShoppingCart = await res.json();
-          console.log('new emptyShoppingCart ', emptyShoppingCart)
           createConnectingCurrentCart(emptyShoppingCart) 
         } else {
           const err = await res.json()
-          setErrors(err.errors)
+          alert(err.errors)
         };
       }
       createEmptyShoppingCart();

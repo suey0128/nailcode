@@ -75,6 +75,12 @@ button {
   font-size: 15px
 }
 
+.logout-btn {
+  background: white;
+  padding: 5px;
+  margin-left: 10px;
+}
+
 /* Home Pgae */
 .purchase-detail-container,
 .profile-container,
@@ -90,7 +96,7 @@ button {
 }
 
 .home-banner-img {
-  object-fit: fill;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -145,6 +151,11 @@ button {
 .title-filter-container button {
   width: 15vw;
 }
+
+.filter {
+  margin-bottom: 5px;
+}
+
 
 /* LOGIN AND SIGNUP also see styled.js*/
 .submit-btn {
@@ -312,7 +323,7 @@ footer {
   }
 
   .product-page-title {
-    font-size: 20px;
+    font-size: 14px;
     margin: 10px 0;
   }
 
@@ -348,6 +359,18 @@ footer {
   .profile-btn-container {
     display: flex;
     flex-direction: row;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-link {
+    font-size:14px
+  }
+
+  .home-banner {
+    height: 150px;
   }
 }
 

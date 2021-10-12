@@ -24,7 +24,6 @@ export default function Review({currentUser, passToAddress}) {
   const classes = useStyles();
 
   const checkoutItems = currentUser.shopping_cart.all_items_in_cart
-  // console.log(currentUser.shopping_cart)
   let subtotal = parseFloat(currentUser.shopping_cart.total_amount).toFixed(2)
   let tax = (parseFloat(currentUser.shopping_cart.total_amount) * 0.065).toFixed(2)
   let shipping = parseFloat(7.99)

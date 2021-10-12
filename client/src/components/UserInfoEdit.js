@@ -12,8 +12,6 @@ function UserInfoEdit ({ currentUser, setCurrentUser, setIsEditing }) {
     const [newZip, setNewZip] = useState(currentUser.zip)
     const [newCountry, setNewCountry] = useState(currentUser.country)
 
-
-    console.log (currentUser)
     const handleProfileEdit = (e) => {
         e.preventDefault();
         //PATCH User
@@ -30,7 +28,6 @@ function UserInfoEdit ({ currentUser, setCurrentUser, setIsEditing }) {
           if (res.ok) {
             const newProfile = await res.json();
             setCurrentUser(newProfile)
-            console.log("dataBackFromPatch",newProfile)
             setIsEditing(false)
           } else {
             const error = await res.json()
@@ -42,7 +39,7 @@ function UserInfoEdit ({ currentUser, setCurrentUser, setIsEditing }) {
 
     return (
         <div>
-            <h2 style={{ 'text-align': 'center' }}>Edit profile</h2>
+            <h2 style={{ 'textAlign': 'center' }}>Edit profile</h2>
            <Form onSubmit={handleProfileEdit}>
 
                 <Input

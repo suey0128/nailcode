@@ -55,7 +55,6 @@ function Home ({showItemPage, setShowItemPage, onAddToCartClick, anchorEl, setAn
 
     //handle search bar
     const onSearchChange = (input) => {
-        // console.log(input)
         setPressOnOnDisplay(pressOnArr.filter(e=> 
             e.description.toLocaleLowerCase().includes(input.toLocaleLowerCase()) || 
             e.name.toLocaleLowerCase().includes(input.toLocaleLowerCase()) 
@@ -103,7 +102,6 @@ function Home ({showItemPage, setShowItemPage, onAddToCartClick, anchorEl, setAn
 
     //handle sorting
     const onSortBarChange = (input) => {
-        // console.log(input)
         if (input === "priceHightoLow") {
             sortingPriceHighToLow(pressOnOnDisplay, setPressOnOnDisplay,"HighToLow")
             sortingPriceHighToLow(glueOnDisplay, setGlueOnDisplay, "HighToLow")
@@ -119,7 +117,7 @@ function Home ({showItemPage, setShowItemPage, onAddToCartClick, anchorEl, setAn
     return (
         <div className="home-container">
             <div className="home-banner">
-                <img className="home-banner-img" src="https://trade.opiuk.com/wp-content/uploads/sites/2/2018/07/3.opi_.grease-red-nail-banner.jpg" alt="" />
+                <img className="home-banner-img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/summernails-1618501971.png" alt="" />
             </div>
 
             <HomeSearchAndSort onSearchChange={onSearchChange}

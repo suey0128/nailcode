@@ -13,7 +13,6 @@ function ShoppingCart({currentUser, needFetch, setNeedFetch}) {
   },[])
 
   const shoppingCartItemList = currentUser.shopping_cart.all_items_in_cart
-  // console.log (currentUser.shopping_cart.all_items_in_cart)
 
   return (
     <div className="shopping-cart-container">
@@ -26,7 +25,7 @@ function ShoppingCart({currentUser, needFetch, setNeedFetch}) {
         />)} 
 
         <div className="shopping-cart-checkout-container">
-          <h3 style={{ 'margin-bottom':'10px' }}>Total: ${currentUser.shopping_cart.total_amount}</h3>
+          <h3 style={{ 'marginBottom':'10px' }}>Total: ${currentUser.shopping_cart.total_amount}</h3>
           <Link to="/checkout">
             <button >Check Out</button>
           </Link>

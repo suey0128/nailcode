@@ -25,7 +25,6 @@ function App() {
   //use state for displaying 
   const [showItemPage, setShowItemPage] = useState("pressOn")
   const [currentUser, setCurrentUser] = useState(null)
-  const [errors, setErrors] = useState([]);
 
   const [needFetch, setNeedFetch] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null);
@@ -55,7 +54,6 @@ function App() {
     e.preventDefault();
     //is the person login ? 
     if (currentUser) {
-      // console.log(shoppingCartDisplayItemList, item)
       let itemAlreadyInCart = cartItemInstances.find(i=> i.item_type === item.item_type && i.item_id===item.id) //=>item instance or false value
       //is this item alreay in cart? yes - PATCH, no - POST
       if (itemAlreadyInCart) {
@@ -76,7 +74,7 @@ function App() {
             setAnchorEl(e.target);
           } else {
             const error = await res.json()
-            setErrors(error.message)
+            alert(error.errors)
           }
         }
         updateCartItem();
@@ -106,7 +104,7 @@ function App() {
             setAnchorEl(e.target);
           } else {
             const error = await res.json()
-            setErrors(error.message)
+            alert(error.errors)
           }
         };
         createCartItem();

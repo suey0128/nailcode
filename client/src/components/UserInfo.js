@@ -22,7 +22,6 @@ function UserInfo ({currentUser, setCurrentUser}) {
         if (res.ok) {
           const newProfile = await res.json();
           setCurrentUser(newProfile)
-          console.log("dataBackFromPatch",newProfile)
           setChangingPassword(false)
         } else {
           const error = await res.json()
@@ -45,9 +44,10 @@ function UserInfo ({currentUser, setCurrentUser}) {
             <Grid container spacing={2} >
               <Grid item xs={12} md={10} >
                 <p className="userinfo">Username: {currentUser.username}</p>
+                <p className="userinfo">Email: {currentUser.email}</p>
                 <p className="userinfo">Default Shipping Address: </p>
                 <p className="userinfo"> {currentUser.first_name} {currentUser.last_name}</p>
-                <p className="userinfo">Address: {currentUser.address} {currentUser.city} {currentUser.state} {currentUser.country}</p>
+                <p className="userinfo"> {currentUser.address} {currentUser.city} {currentUser.state} {currentUser.country}</p>
               </Grid>
 
               <Grid item xs={12} md={2} className="profile-btn-container">

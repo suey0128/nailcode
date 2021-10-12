@@ -2,12 +2,10 @@ import { useHistory } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 
 function PurchaseDetailCard ({purchasedItem}) {
-    console.log(purchasedItem)
 
     let history = useHistory();
 
     const handleItemPhotoClick = () => {
-        // console.log(item.color)
         if (purchasedItem.item.color) { //press_on
             history.push(`/items/press_ons/${purchasedItem.item.id}`);
         } else if (purchasedItem.item.strength) { //glue

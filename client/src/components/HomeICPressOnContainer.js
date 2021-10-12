@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    marginTop: '5px',
   }
 }));
 
@@ -27,7 +28,6 @@ function HomeICPressOnContainer({pressOnOnDisplay, setPressOnOnDisplay, pressOnA
 
 
   useEffect(()=>{
-    // console.log("filteredArrWithRepetition:",filteredArrWithRepetition,"filteredArr:",filteredArr)
     if (filteredArr.length > 0) {
     setPressOnOnDisplay(filteredArr)
     } else {
@@ -114,7 +114,7 @@ function HomeICPressOnContainer({pressOnOnDisplay, setPressOnOnDisplay, pressOnA
 
 
             <div className={classes.root}>
-                <Grid container spacing={2}>
+                <Grid container spacing={5}>
                     {pressOnOnDisplay.map((pressOnItem)=><HomeICItemCard key={pressOnItem.id} 
                                                                           item={pressOnItem}
                                                                           onAddToCartClick={onAddToCartClick}
